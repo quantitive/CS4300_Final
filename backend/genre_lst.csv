@@ -1,0 +1,22 @@
+,genres,more than 75 movies,number of movies
+0,horror,True,559
+1,sport,True,119
+2,film-noir,False,26
+3,war,True,99
+4,adventure,True,1009
+5,history,True,139
+6,action,True,1329
+7,crime,True,1036
+8,musical,False,64
+9,music,True,133
+10,comedy,True,1870
+11,romance,True,849
+12,sci-fi,True,444
+13,fantasy,True,413
+14,animation,True,254
+15,thriller,True,850
+16,drama,True,2583
+17,western,False,52
+18,family,True,279
+19,biography,True,305
+20,mystery,True,516

@@ -1,0 +1,78 @@
+.container {
+  margin-bottom: 100px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#title {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin-bottom: 50px;
+  width: 100%;
+  background-color: rgb(53, 104, 53);
+  color: white;
+  font-size: 48px;
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 4px #767676;
+  border: 2px solid #AB987A;
+  font-weight: 100 !important;
+  text-transform: capitalize;
+}
+
+.card .btn,
+.card .btn:focus,
+.card .btn:hover,
+.card .btn:enabled {
+  background-color: #AB987A;
+  color: black;
+  border: none !important;
+  margin-bottom: 10px;
+}
+
+.card img {
+  max-width: 300px;
+}
+
+.card-title {
+  font-size: 24px;
+  margin-top: 25px;
+  color: #ff533D;
+}
+
+.card-artist,
+.song-info {
+  font-size: 16px;
+}
+
+.card .img-container {
+  position: relative;
+  align-items: center;
+  justify-items: center;
+}
+
+.progress {
+  height: 35px;
+  font-size: 16px;
+  border-radius: 7px;
+}
+
+.progress div {
+  display: block;
+  color: black;
+  font-size: 18px;
+  border-radius: 7px;
+}
+
+.collapse {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.song-lyric {
+  white-space: pre-wrap;
+  text-transform: none !important;
+}

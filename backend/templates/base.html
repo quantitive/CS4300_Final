@@ -1,0 +1,165 @@
+<!doctype html>
+
+<head>
+    <title>
+        {% block title %}Home{% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat&family=Open+Sans:wght@500&display=swap"
+        rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <!-- main.js -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+
+<body onload="initialize()">
+    <div class="full-body-container">
+        <div class="top-text">
+            <div class="title">
+                <h1 id="cinemaSonic">CinemaSonic</h1>
+                <h2 id="subtitle">Find songs that match your movie taste!</h2>
+            </div>
+            <div class="input-boxes">
+                <form id="input-form">
+                    <div class="form-group">
+                        <label for="inputMovie">Movie Title*</label>
+                        <div class="input-movie">
+                            <img src="{{ url_for('static', filename='images/mag.png') }}" />
+                            <input placeholder="Enter the movie title (ex: The Matrix)" id="title-in">
+                        </div>
+                        <p class="empty-input-error" id="empty-input-title-error">Please input the required field.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputGenre">Movie Genre*</label>
+                        <select class="form-control form-select" aria-label="Movie Genre Select" id="genre-in">
+                            <option selected>Select a genre</option>
+                            {% for i in movieGenres %}
+                            <option>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="text" class="form-control input-genre"
+                            placeholder="If other: specify (one) movie genre" id="other-movie-genre">
+                        <p class="empty-input-error" id="empty-input-genre-error">Please input the required field.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDirector">Director (full name)</label>
+                        <div class="input-director">
+                            <input placeholder="(optional)" id="director-in">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="filters">
+                            <div class="pop-filter">
+                                <label for="popularity">Song Popularity</label>
+                                <input type="range" min="1" max="3" value="2" class="slider" id="popularity-range">
+                                <ul class="labels">
+                                    <li>Niche only</li>
+                                    <li>Anything</li>
+                                    <li>Popular only</li>
+                                </ul>
+                            </div>
+                            <div class="length-filter">
+                                <label for="length">Song length</label>
+                                <input type="range" min="1" max="3" value="2" class="slider" id="length-range">
+                                <ul class="labels">
+                                    <li>Short</li>
+                                    <li>Anything</li>
+                                    <li>Long</li>
+                                </ul>
+                            </div>
+                            <div class="genre-filter">
+
+                                <label for="genre">Song genres</label>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#songGenreCollapse" aria-expanded="false"
+                                    aria-controls="songGenreCollapse" id="genreToggleButton"></button>
+
+                                <div class="collapse" id="songGenreCollapse">
+                                    <ul class="checklist">
+                                        <li>
+                                            <input type="checkbox" id="all" checked>
+                                            <label for="all">All</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="edm-genre" checked>
+                                            <label for="edm">EDM</label>
+                                        </li>
+
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="latin-genre" checked>
+                                            <label for="latin">Latin</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="pop-genre" checked>
+                                            <label for="pop">Pop</label>
+                                        </li>
+
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="rap-genre" checked>
+                                            <label for="rap">Rap</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="rnb-genre" checked>
+                                            <label for="rock">RnB</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" class="music-genre" id="rock-genre" checked>
+                                            <label for="rock">Rock</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="requiredMessage">
+                        Fields marked with * are required.
+                    </div>
+                    <div class="formButton">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#explainCollapse" aria-expanded="false" aria-controls="explainCollapse"
+                            id="explainToggleButton">Show how we get your results</button>
+                        <button type="submit" class="btn btn-primary" id="submitButton" onclick="submit">Find me
+                            songs!</button>
+                        <button type="reset" class="btn btn-primary" id="resetButton" onclick="reset">Reset
+                            Form</button>
+
+
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="explanation" id="explanation">
+            To find the perfect songs for you, we first scour our database for your chosen movie. If a close match
+            cannot be found, we then rely on the input genre as well the director (if provided) to find the most similar
+            movie. From there, we find the best-matching songs by comparing the movie's description with lyrics, as well
+            as comparing the outputs of similar movies. Then, we filter the results to match the criteria you have
+            selected (ex: niche, short, edm songs) and return the best-fitting songs for your listening enjoyment!
+        </div>
+        <div id="loading" style="display: none;">
+            <i class="loading"></i> Loading...
+            <br>
+        </div>
+        <div id="output">
+        </div>
+
+
+
+</body>

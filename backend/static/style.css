@@ -1,0 +1,172 @@
+.full-body-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: #0F1626;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-movie,
+.input-desc,
+.form-control.input-genre,
+.input-director {
+    border-radius: 50px;
+    border: 2px solid #AB987A;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 5px;
+    width: 600px;
+    background-color: white;
+    color: black;
+}
+
+.input-boxes img {
+    height: 20px;
+    width: 20px;
+}
+
+.top-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-movie input,
+.input-desc input,
+/* .input-year input, */
+.input-director input {
+    width: 100%;
+    margin-left: 10px;
+    font-size: 16px;
+    border: none;
+    outline: 0;
+}
+
+input:focus {
+    color: black;
+}
+
+.checklist {
+    list-style-type: none;
+}
+
+.checklist li {
+    margin-bottom: 10px;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.labels li {
+    text-align: center;
+}
+
+.title {
+    padding-bottom: 20px;
+}
+
+#cinemaSonic {
+    text-align: center;
+    color: #ff533D;
+    font-size: 92px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+}
+
+#subtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    color: #AB987A;
+    margin-top: -5px;
+}
+
+#input-form label {
+    font-size: 18px;
+    font-weight: 100;
+    display: inline;
+}
+
+button {
+    border: none !important;
+}
+
+#submitButton {
+    background-color: #AB987A;
+    color: #0F1626;
+}
+
+#resetButton {
+    background-color: #ff533D;
+}
+
+#explainButton {
+    background-color: rgb(34, 34, 117);
+}
+
+#genreToggleButton {
+    background-color: #0F1626;
+    color: white;
+    margin-left: 15px;
+    border: 1px solid white !important;
+    width: 60px;
+}
+
+#explainToggleButton {
+    background-color: #96743e;
+    margin-left: 15px;
+    color: black;
+
+    margin-right: 50px;
+    width: 230px;
+}
+
+.explanation {
+    background-color: #193984;
+    color: black;
+    border: 5px solid #4f3409 !important;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #96743e;
+    width: 600px;
+    padding: 15px;
+    margin-bottom: 30px;
+    display: none;
+
+}
+
+.formButton {
+    margin-top: 30px;
+    float: right;
+    margin-bottom: 30px;
+}
+
+
+.empty-input-error {
+    color: red;
+    display: none;
+}
+
+#output {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#output .row {
+    margin-bottom: 20px;
+}
